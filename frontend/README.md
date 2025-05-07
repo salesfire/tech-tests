@@ -79,7 +79,7 @@ Ensure that any prior pending request is aborted before issuing a new one.
   - Project scaffold (Vue CLI)  
   - src/components/SearchBar.vue  
   - src/components/ResultsSet.vue  
-  - src/store/index.js (pinia store with actions, mutations, getters)  
+  - src/store/index.js (pinia store)
 
 - **Commit History**  
   - Meaningful, atomic commits demonstrating your workflow.
