@@ -94,7 +94,7 @@ Ensure that any prior pending request is aborted before issuing a new one.
 - Error Boundaries: Handle unexpected errors gracefully.  
 - Accessibility: Ensure components are WCAG-compliant (e.g., ARIA roles, focus management).  
 - TypeScript: Convert the store or components to TypeScript.  
-- Styling: Add a clean, responsive design (e.g., Tailwind CSS).  
+- Styling: Add a clean, responsive design
 - Documentation: Provide a Postman collection or OpenAPI snippet for the search endpoint.
 - No results handling
 
