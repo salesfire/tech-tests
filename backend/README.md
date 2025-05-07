@@ -2,7 +2,7 @@
 
 Welcome! 👋🏻 You’re about to embark on a technical assessment that reflects the real-world challenges our engineering team tackles every day. This tech test should take you **about 1–2 hours** to complete.
 
-In this exercise, you’ll work with **PHP 8.x** and **Laravel**, using **Eloquent** for your data layer, **PHPUnit** for automated tests, and **Docker Compose** to containerize your service. Good luck—and enjoy the process!
+In this exercise, you’ll work with **PHP 8.x** and **Laravel**, using **Eloquent** for your data layer, **PHPUnit** for automated tests, and (optional) **Docker Compose** to containerize your service. Good luck—and enjoy the process!
 
 ## 🎯 Background & Context
 
