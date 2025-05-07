@@ -2,7 +2,7 @@
 
 Welcome! 👋🏻 You’re about to embark on a technical assessment that mirrors real-world challenges our engineering team tackles daily. This tech test should take you **about 1–2 hours** to complete.
 
-In this exercise, you’ll work with Vue.js 3, Vuex for state management, and the browser’s native fetch API to consume a production Salesfire endpoint. Good luck—and enjoy the process!
+In this exercise, you’ll work with Vue.js 3, pinia for state management, and the browser’s native fetch API to consume a production Salesfire endpoint. Good luck—and enjoy the process!
 
 ---
 
@@ -14,7 +14,7 @@ At Salesfire, we strive to deliver seamless, real-time product discovery experie
 - **Suggestions** adapt as users type, improving engagement and conversion.  
 - **State Management** ensures that UI components remain in sync, even as multiple asynchronous calls occur.  
 
-This test focuses on building a minimal search interface that demonstrates your ability to structure a Vue application, manage centralized state with Vuex, and integrate with our live search API.
+This test focuses on building a minimal search interface that demonstrates your ability to structure a Vue application, manage centralized state with pinia, and integrate with our live search API.
 
 ---
 
@@ -23,11 +23,11 @@ This test focuses on building a minimal search interface that demonstrates your 
 1. **Landing**  
    - A visitor opens the search page.  
 2. **Typing**  
-   - As the user types “michael cor,” the SearchBar component emits the query on each keyup.  
+   - As the user types “michael cor,”
 3. **Fetching**  
-   - The application dispatches a Vuex action that calls the Salesfire search API.  
+   - The application dispatches a pinia action that calls the Salesfire search API.  
 4. **Displaying**  
-   - Once results arrive, Vuex state is updated and the ResultsSet component renders product suggestions.  
+   - Once results arrive, pinia state is updated and the ResultsSet component renders product suggestions.  
 5. **Cancelling**  
    - If the user types again before the previous request resolves, the in-flight request is aborted to prevent stale results.  
 
@@ -38,15 +38,13 @@ This test focuses on building a minimal search interface that demonstrates your 
 ### 1. Project Setup
 - Create a new Git repository and push it to GitHub for review.  
 - Scaffold a fresh Vue 3 project using the Vue CLI.  
-- Install and configure Vuex for centralized state.
+- Install and configure pinia for centralized state.
 
 ### 2. Components
 - **SearchBar**  
-  - Emits the current input value on each keyup.  
-  - Debounces input to reduce unnecessary API calls (optional, but recommended).  
+  - Emits the current input value on each keyup.    
 - **ResultsSet**  
-  - Subscribes to Vuex state via getters.  
-  - Renders a list of search suggestions or a “no results” message.
+  - Subscribes to pinia state via getters.  
 
 ### 3. State Management
 - **Store Structure**  
@@ -81,7 +79,7 @@ Ensure that any prior pending request is aborted before issuing a new one.
   - Project scaffold (Vue CLI)  
   - src/components/SearchBar.vue  
   - src/components/ResultsSet.vue  
-  - src/store/index.js (Vuex store with actions, mutations, getters)  
+  - src/store/index.js (pinia store with actions, mutations, getters)  
 
 - **Commit History**  
   - Meaningful, atomic commits demonstrating your workflow.
@@ -98,6 +96,7 @@ Ensure that any prior pending request is aborted before issuing a new one.
 - TypeScript: Convert the store or components to TypeScript.  
 - Styling: Add a clean, responsive design (e.g., Tailwind CSS).  
 - Documentation: Provide a Postman collection or OpenAPI snippet for the search endpoint.
+- No results handling
 
 ---
 
