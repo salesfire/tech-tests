@@ -29,7 +29,7 @@ This test mimics a slice of that system—you’ll design and build a minimal AP
 
 ---
 
-## 🛠️ What You’ll Build (30–60 min)
+## 🛠️ What You’ll Build (~60 min)
 
 1. **Core Functionality Only**  
    - **Profiles**: Register a user by email & name.  
