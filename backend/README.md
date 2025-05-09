@@ -1,8 +1,8 @@
 # Event & Segment API
 
-Welcome! 👋🏻 You’re about to embark on a technical assessment that reflects the real-world challenges our engineering team tackles every day. This tech test should take you **about 1–2 hours** to complete.
+Welcome! 👋🏻 You’re about to embark on a technical assessment that reflects the real-world challenges our engineering team tackles every day. This tech test should take you **about 60 minutes** to complete.
 
-In this exercise, you’ll work with **PHP 8.x** and **Laravel**, using **Eloquent** for your data layer, **PHPUnit** for automated tests, and (optional) **Docker Compose** to containerize your service. Good luck—and enjoy the process!
+In this exercise, you’ll work with **PHP 8.x** and **Laravel**, using **Eloquent** for your data layer and **PHPUnit** for automated tests. Good luck—and enjoy the process!
 
 ## 🎯 Background & Context
 
@@ -29,60 +29,51 @@ This test mimics a slice of that system—you’ll design and build a minimal AP
 
 ---
 
-## 🛠️ What You’ll Build
+## 🛠️ What You’ll Build (30–60 min)
 
-### 1. Database Schema
+1. **Core Functionality Only**  
+   - **Profiles**: Register a user by email & name.  
+   - **Events**: Record an event (name + JSON payload + timestamp) against a profile.  
+   - **“Abandoned Cart” Segment**: Return all profiles who have at least one `cart.added` event and **no** `order.completed` event.  
 
-- A **profiles** table to store user identities.  
-- An **events** table to capture named events plus arbitrary JSON properties and a timestamp.  
-- A **segments** table to define a rule: event name + minimum count threshold.
+2. **Minimal Endpoints**  
+   1. `POST /api/profiles` → create profile  
+   2. `POST /api/profiles/{id}/events` → ingest event  
+   3. `GET  /api/segments/abandoned-cart` → list matching profiles  
 
-### 2. JSON API Endpoints
+3. **Database Schema**  
+   - `profiles` table:  
+     - `id` (PK)  
+     - `email` (string, unique)  
+     - `name` (string)  
+     - `created_at` / `updated_at`  
+   - `events` table:  
+     - `id` (PK)  
+     - `profile_id` (FK → profiles.id)  
+     - `name` (string)  
+     - `properties` (JSON)  
+     - `created_at` / `updated_at`  
 
-Implement a RESTful JSON API that supports:
+4. **Segment Logic**  
+   Implement a single scope or static method, e.g. `Profile::abandonedCart()`, which returns all profiles matching the abandoned-cart criteria.
 
-- Create a new profile  
-- Record (ingest) an event for an existing profile  
-- Retrieve a profile’s events, with optional filters by event name or date  
-- Define a new segment rule  
-- Retrieve all profiles matching a given segment’s criteria  
+5. **Testing (PHPUnit)**  
+   - **Model test**: Verify that `Profile::abandonedCart()` returns the correct set of profiles.  
+   - **Controller tests**:  
+     - Creating profiles returns HTTP 201 with the created JSON.  
+     - Ingesting events returns HTTP 201.  
+     - Querying `/api/segments/abandoned-cart` returns HTTP 200 with the expected profiles array.  
 
-### 3. Segment Logic
-
-Segment membership should return **only** those profiles that have generated the segment’s target event **at least** the configured minimum number of times.
-
-### 4. Testing
-
-Demonstrate reliability with PHPUnit:
-
-- **Model tests**  
-- **Controller tests**  
-
----
-
-## 📦 Deliverables
-
-- **README.md** with prerequisites, install/migrate/test/run instructions  
-- Laravel application code: models, controllers, FormRequests, API Resources  
-- Migrations and factory definitions  
-- PHPUnit tests  
-- PSR-12–compliant, well-structured code  
-
----
-
-## 🌟 Bonus Points
-
-- **Pagination & Filtering**: Cursor- or key-set pagination; multi-field filters (date range, event types).  
-- **Authentication & Security**: Implement a simple API token guard or middleware; demonstrate best practices.  
-- **Error Handling**: Standardize JSON error format and global exception handling.  
-- **API Documentation**: Provide an OpenAPI/Swagger spec or Postman collection, with examples for success and error cases.  
-- **Idempotency**: Handle duplicate event submissions safely (e.g. idempotency keys or unique constraints).  
-- **Performance & Indexing**: Suggest indexing strategies or query optimizations for high-volume data.  
-- **CI/CD Integration**: Outline or stub a basic GitHub Actions (or similar) workflow for linting, migrations, and test runs.  
-- **Code Quality**: Include configuration for PHPStan/PSalm or PHP-CS-Fixer to enforce standards.  
-- **Data Retention & GDPR**: Briefly describe a strategy for archival or soft-deletion and compliance with “right to be forgotten.”  
-- **Diagrams & Visuals**: Add a simple ER diagram or sequence diagram to illustrate data flows.  
+6. **Deliverables**  
+   - **README.md** with prerequisites, install/migrate/test/run instructions  
+   - Laravel application code:  
+     - Migrations  
+     - Models  
+     - Controllers  
+     - Routes  
+     - FormRequests  
+     - API Resources  
+   - PHPUnit tests (4–6 assertions total)  
+   - PSR-12–compliant, well-structured code  
 
 ---
-
-Good luck, and we look forward to reviewing your solution!  
