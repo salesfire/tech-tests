@@ -1,102 +1,45 @@
-# Front End Search UI Test
+# Front End Tech Test
 
-Welcome! 👋🏻 You’re about to embark on a technical assessment that mirrors real-world challenges our engineering team tackles daily. This tech test should take you **about 1–2 hours** to complete.
+We would like you to demonstrate your Vue skills along with using Vue store and API calls.
 
-In this exercise, you’ll work with Vue.js 3, pinia for state management, and the browser’s native fetch API to consume a production Salesfire endpoint. Good luck—and enjoy the process!
+The test itself is not elaborate, but tests a wide reaching area of skills, making use of a production Salesfire API.
 
----
+## What to create
 
-## 🎯 Background & Context
+We want you to create a simple search box which displays some results from a Salesfire API. We have outlined the steps you need to carry out below - we will be observing how you implement these steps, the way you write and format code, and the way you make use of Vuex to keep a central and organised state.
 
-At Salesfire, we strive to deliver seamless, real-time product discovery experiences:
+For this test you may use the browser's native fetch function to call the API.
 
-- **Search** powers our customers’ ability to find products instantly.  
-- **Suggestions** adapt as users type, improving engagement and conversion.  
-- **State Management** ensures that UI components remain in sync, even as multiple asynchronous calls occur.  
+What you need to do:
 
-This test focuses on building a minimal search interface that demonstrates your ability to structure a Vue application, manage centralized state with pinia, and integrate with our live search API.
+- Create a new public Git repo and push to Github so we can review - you can optionally use GitHub pages or Netlify to host your app.
+- Create a new Vue project, https://vuejs.org/guide/quick-start.
+- Install Pinia for the store and central state.
+- Create two components, a SearchBar and a ResultsSet.
+- When the user carries out a search triggering an onInput event, you need to call the store, which calls the API and updates the state - make use of actions and mutations.
+- You can then show results from the state in the results component using Vuex getters.
 
----
 
-## 🎬 User Journey Example
+## API Spec
 
-1. **Landing**  
-   - A visitor opens the search page.  
-2. **Typing**  
-   - As the user types “michael cor,”
-3. **Fetching**  
-   - The application dispatches a pinia action that calls the Salesfire search API.  
-4. **Displaying**  
-   - Once results arrive, pinia state is updated and the ResultsSet component renders product suggestions.  
-5. **Cancelling**  
-   - If the user types again before the previous request resolves, the in-flight request is aborted to prevent stale results.  
+GET https://aix.salesfire.co.uk/api/searcha
+Query Params:
+client_id | Uuid | the site ID, you can use 'dbf1dbc9-a940-48c2-b44b-0bb6dc63924e' for this test
+query | String | the query
+limit | Int | the number of results to show
+page | Int | the page number
 
----
+Common queries could include "rado", "omega".
 
-## 🛠️ What You’ll Build
+## Typical Time
 
-### 1. Project Setup
-- Create a new Git repository and push it to GitHub for review.  
-- Scaffold a fresh Vue 3 project using the Vue CLI.  
-- Install and configure pinia for centralized state.
+Anyone competent with Vue can achieve this in roughly 30 minutes. A person less experienced with Vue may be required to spend longer.
 
-### 2. Components
-- **SearchBar**  
-  - Emits the current input value on each keyup.    
-- **ResultsSet**  
-  - Subscribes to pinia state via getters.  
+This is also an opportunity to show off any other skills :-)
 
-### 3. State Management
-- **Store Structure**  
-  - State: query, results, isLoading, error  
-  - Actions: performSearch (calls the API, handles cancellation)  
-  - Mutations: set query, toggle isLoading, store results and error  
-  - Getters: access results and loading status
+## Notes and Tips
 
-### 4. API Integration
-Use browser-native fetch to call the Salesfire search endpoint at https://aix.salesfire.co.uk/api/searcha with the following query parameters:  
-- client_id = 3f32397c-21c6-47e5-9ebd-e9865ea03470  
-- query = user’s search term  
-- limit = number of results to return  
-- page = page number  
-
-Ensure that any prior pending request is aborted before issuing a new one.
-
-### 5. UX Considerations
-- Show a loading indicator while searching.  
-- Display user-friendly error messages on network failure.  
-- Ensure the UI is responsive and accessible (ARIA attributes, keyboard navigation).
-
----
-
-## 📦 Deliverables
-
-- **README.md**  
-  - Prerequisites and setup instructions  
-  - npm install, npm run serve, and test commands  
-
-- **Vue Application Code**  
-  - Project scaffold (Vue CLI)  
-  - src/components/SearchBar.vue  
-  - src/components/ResultsSet.vue  
-  - src/store/index.js (pinia store)
-
-- **Commit History**  
-  - Meaningful, atomic commits demonstrating your workflow.
-
----
-
-## 🌟 Bonus Points
-
-- Debounce/Throttle: Implement input debouncing to limit API calls.  
-- Unit Tests: Add tests for components and store using your preferred testing library.  
-- Pagination: Allow users to request additional pages of results.  
-- Error Boundaries: Handle unexpected errors gracefully.  
-- Accessibility: Ensure components are WCAG-compliant (e.g., ARIA roles, focus management).  
-- TypeScript: Convert the store or components to TypeScript.  
-- Styling: Add a clean, responsive design
-- No results handling
-
----
-
-Good luck, and we look forward to reviewing your solution!
+You will need to prevent results showing from previous pending API calls.
+Components should follow modern standards, be semantic, and be mindful accessibility practices.
+Usability is key, think about how the user might interact, and what to display if there's no results returned.
+Code should be clean, and understandable, and be error free.
